@@ -91,7 +91,7 @@ template: |
   use Module::Install::AuthorTests;
   use Module::Install::ReadmeMarkdownFromPod;
 
-  name '[% package %]'
+  name '[% package %]';
   all_from 'lib/[% path %]';
   readme_markdown_from('lib/[% path %]');
 

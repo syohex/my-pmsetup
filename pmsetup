@@ -129,8 +129,8 @@ file: lib/$path
 template: |
   package [% module %];
 
-  use strict;
   use 5.008_001;
+  use strict;
   our $VERSION = '0.01';
 
   1;

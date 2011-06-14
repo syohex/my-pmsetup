@@ -6,6 +6,7 @@ use File::Basename;
 use File::Path;
 use File::Spec;
 use Template;
+use Time::Piece;
 use YAML;
 
 my $path   = File::Spec->catfile($ENV{HOME}, "/.pmsetuprc");
@@ -45,8 +46,11 @@ sub write_plugin_files {
     chdir $dist;
 
     my @template = YAML::Load(join '', <DATA>);
-    my $vars = { module => $module, dist => $dist, path => $path,
-                 config => $config, localtime => scalar localtime, year => (localtime)[5] + 1900 };
+    my $vars = {
+        module => $module, dist => $dist, path => $path,
+        config => $config, localtime => localtime()->ymd,
+        year => (localtime)[5] + 1900
+    };
 
     for my $tmpl (@template) {
         my $file = $tmpl->{file};
@@ -91,10 +95,11 @@ template: |
   use Module::Install::AuthorTests;
   use Module::Install::ReadmeMarkdownFromPod;
 
-  name '[% package %]';
+  name '[% dist %]';
   all_from 'lib/[% path %]';
   readme_markdown_from('lib/[% path %]');
 
+  author_tests('xt');
   auto_set_repository();
   WriteAll;
 
@@ -221,6 +226,7 @@ template: |
   META.yml
   Makefile
   Makefile.old
+  MANIFEST.bak
   inc/
   blib/
   pm_to_blib

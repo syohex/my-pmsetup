@@ -93,14 +93,11 @@ file: Makefile.PL
 template: |
   use inc::Module::Install;
   use Module::Install::AuthorTests;
-  use Module::Install::ReadmeMarkdownFromPod;
 
   name '[% dist %]';
   all_from 'lib/[% path %]';
-  readme_markdown_from('lib/[% path %]');
 
   author_tests('xt');
-  auto_set_repository();
   WriteAll;
 
 ---
@@ -192,8 +189,8 @@ template: |
 
   INSTALLATION
 
-  [% module %] installation is straightforward. If your CPAN shell is set up,
-  you should just be able to do
+  [% module %] installation is straightforward.
+  If your CPAN shell is set up, you should just be able to do
 
       % cpan [% module %]
 
@@ -208,7 +205,8 @@ template: |
 
   DOCUMENTATION
 
-  [% module %] documentation is available as in POD. So you can do:
+  [% module %] documentation is available as in POD.
+  So you can do:
 
       % perldoc [% module %]
 
@@ -224,6 +222,7 @@ template: |
 file: .gitignore
 template: |
   META.yml
+  MYMETA.yml
   Makefile
   Makefile.old
   MANIFEST.bak

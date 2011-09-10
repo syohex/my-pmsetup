@@ -182,6 +182,7 @@ template: |
   \.gz$
   \.cvsignore
   \.shipit
+  MYMETA
 ---
 file: README
 template: |
@@ -223,6 +224,7 @@ file: .gitignore
 template: |
   META.yml
   MYMETA.yml
+  MYMETA.json
   Makefile
   Makefile.old
   MANIFEST.bak

@@ -5,7 +5,7 @@ use ExtUtils::MakeMaker qw(prompt);
 use File::Basename;
 use File::Path;
 use File::Spec;
-use Template;
+use Text::Xslate;
 use Time::Piece;
 use YAML;
 
@@ -78,8 +78,8 @@ sub write_file {
         File::Path::mkpath($dir, 1, 0777);
     }
 
-    my $tt = Template->new;
-    $tt->process(\$template, $vars, \my $content);
+    my $tt = Text::Xslate->new;
+    my $content = $tt->render_string($template, $vars);
 
     warn "Creating $path\n";
     open my $out, ">", $path or die "$path: $!";
@@ -94,8 +94,8 @@ template: |
   use inc::Module::Install;
   use Module::Install::AuthorTests;
 
-  name '[% dist %]';
-  all_from 'lib/[% path %]';
+  name '<: $dist :>';
+  all_from 'lib/<: $path :>';
 
   author_tests('xt');
   WriteAll;
@@ -106,7 +106,7 @@ template: |
   use strict;
   use Test::More tests => 1;
 
-  BEGIN { use_ok '[% module %]' }
+  BEGIN { use_ok '<: $module :>' }
 ---
 file: xt/pod.t
 template: |
@@ -117,14 +117,14 @@ template: |
 ---
 file: Changes
 template: |
-  Revision history for Perl extension [% module %]
+  Revision history for Perl extension <: $module :>
 
-  0.01  [% localtime %]
+  0.01  <: $localtime :>
           - original version
 ---
 file: lib/$path
 template: |
-  package [% module %];
+  package <: $module :>;
 
   use 5.008_001;
   use strict;
@@ -139,23 +139,23 @@ template: |
 
   =head1 NAME
 
-  [% module %] -
+  <: $module :> -
 
   =head1 SYNOPSIS
 
-    use [% module %];
+    use <: $module :>;
 
   =head1 DESCRIPTION
 
-  [% module %] is
+  <: $module :> is
 
   =head1 AUTHOR
 
-  [% config.author %] E<lt>[% config.email %]E<gt>
+  <: $config.author :> E<lt><: $config.email :>E<gt>
 
   =head1 COPYRIGHT
 
-  Copyright [% year %]- [% config.author %]
+  Copyright <: $year :>- <: $config.author :>
 
   =head1 LICENSE
 
@@ -186,14 +186,14 @@ template: |
 ---
 file: README
 template: |
-  This is Perl module [% module %].
+  This is Perl module <: $module :>.
 
   INSTALLATION
 
-  [% module %] installation is straightforward.
+  <: $module :> installation is straightforward.
   If your CPAN shell is set up, you should just be able to do
 
-      % cpan [% module %]
+      % cpan <: $module :>
 
   Download it, unpack it, then build it as per the usual:
 
@@ -206,14 +206,14 @@ template: |
 
   DOCUMENTATION
 
-  [% module %] documentation is available as in POD.
+  <: $module :> documentation is available as in POD.
   So you can do:
 
-      % perldoc [% module %]
+      % perldoc <: $module :>
 
   to read the documentation online with your favorite pager.
 
-  [% config.author %]
+  <: $config.author :>
 ---
 file: .shipit
 template: |

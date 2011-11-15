@@ -64,7 +64,7 @@ sub write_plugin_files {
     !system 'git add .' or die $?;
     !system 'git commit -m "init repos"' or die $?;
     !system 'git tag init' or die $?;
-    !system 'make test';
+    !system 'make test' or die $?;
     !system 'make distclean' or die $?;
 }
 
@@ -137,6 +137,7 @@ template: |
   Syohei YOSHIDA
   syohex
   gmail
+  <: $module :>
 ---
 file: xt/02_perlcritic.t
 template: |

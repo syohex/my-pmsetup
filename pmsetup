@@ -97,11 +97,13 @@ file: Makefile.PL
 template: |
   use inc::Module::Install;
   use Module::Install::AuthorTests;
+  use Module::Install::Repository;
 
   name '<: $dist :>';
   all_from 'lib/<: $path :>';
 
   author_tests('xt');
+  auto_set_repository();
   WriteAll;
 
 ---

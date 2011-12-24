@@ -231,6 +231,7 @@ template: |
   \.gz$
   \.cvsignore
   \.shipit
+  \.bs$
   MYMETA
 ---
 file: README

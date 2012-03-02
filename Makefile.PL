@@ -18,6 +18,5 @@ requires 'Software::License';
 requires 'Text::Xslate::Bridge::TT2Like';
 
 install_script 'pmsetup';
-use_test_base;
 auto_include;
 WriteAll;

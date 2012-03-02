@@ -12,6 +12,10 @@ requires 'Module::Install::XSUtil' => 0.30;
 requires 'Test::Spelling';
 requires 'Test::Perl::Critic';
 requires 'Test::Pod';
+requires 'Perl::Tidy';
+requires 'Config::Pit';
+requires 'Software::License';
+requires 'Text::Xslate::Bridge::TT2Like';
 
 install_script 'pmsetup';
 use_test_base;

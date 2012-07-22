@@ -15,6 +15,7 @@ requires 'Test::Pod';
 requires 'Perl::Tidy';
 requires 'Config::Pit';
 requires 'Software::License';
+requires 'Project::Libs';
 requires 'Text::Xslate::Bridge::TT2Like';
 
 install_script 'pmsetup';

@@ -102,6 +102,8 @@ template: |
   name '<: $dist :>';
   all_from 'lib/<: $path :>';
 
+  test_requires 'Test::More' => '0.98';
+
   author_tests('xt');
   auto_set_repository();
   WriteAll;

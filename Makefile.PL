@@ -9,6 +9,7 @@ requires 'Module::Install' => 1.00;
 requires 'Module::Install::AuthorTests';
 requires 'Module::Install::Repository';
 requires 'Module::Install::XSUtil' => 0.30;
+requires 'Pod::Markdown';
 requires 'Test::Spelling';
 requires 'Test::Perl::Critic';
 requires 'Test::Pod';

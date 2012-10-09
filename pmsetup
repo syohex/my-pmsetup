@@ -236,6 +236,7 @@ template: |
   \.shipit
   \.bs$
   MYMETA
+  README.md
 ---
 file: README
 template: |

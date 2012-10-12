@@ -37,13 +37,6 @@ if ($^O eq 'linux') {
     requires 'Mac::FSEvents';
 }
 
-requires 'Encode::Guess';
-requires 'Data::Recursive::Encode';
-
-requires 'Email::Sender::Simple';
-requires 'Net::SMTP::SSL';
-requires 'Net::IMAP::Client';
-
 requires 'AnyEvent';
 requires 'App::cpanoutdated';
 requires 'App::Ack';

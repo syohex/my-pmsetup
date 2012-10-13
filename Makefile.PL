@@ -43,5 +43,7 @@ requires 'AnyEvent';
 requires 'App::cpanoutdated';
 requires 'App::Ack';
 
+install_script 'pmsetup';
+
 auto_include;
 WriteAll;

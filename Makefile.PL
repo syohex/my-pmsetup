@@ -26,6 +26,8 @@ requires 'Class::Accessor::Lite';
 
 # Web Programming
 requires 'Plack';
+requires 'LWP::UserAgent';
+requires 'LWP::Protocol::https';
 requires 'Furl';
 requires 'XML::LibXML';
 requires 'XML::RSS::LibXML';

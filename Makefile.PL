@@ -43,6 +43,9 @@ requires 'AnyEvent';
 requires 'App::cpanoutdated';
 requires 'App::Ack';
 
+requires 'ShipIt';
+requires 'cpan-upload-http';
+
 install_script 'pmsetup';
 
 auto_include;

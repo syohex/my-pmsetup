@@ -235,6 +235,8 @@ template: |
   \.cvsignore
   \.shipit
   \.bs$
+  Build
+  _build/
   MYMETA
   ^README.md$
   ^README.pod$

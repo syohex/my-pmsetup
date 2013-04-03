@@ -58,7 +58,6 @@ my $builder = Module::Build->new(
         'App::Ack'          => '0',
 
         'ShipIt'           => '0',
-        'cpan-upload-http' => '0',
         $file_notify       => '0',
     },
 

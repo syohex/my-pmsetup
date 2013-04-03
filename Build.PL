@@ -59,6 +59,9 @@ my $builder = Module::Build->new(
 
         'ShipIt'           => '0',
         $file_notify       => '0',
+
+        'Text::MultiMarkdown' => '0',
+        'Data::Section::Simple' => '0',
     },
 
     script_files => ['./pmsetup'],

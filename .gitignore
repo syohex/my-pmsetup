@@ -2,6 +2,8 @@ inc/*
 META.yml
 MYMETA.json
 MYMETA.yml
+Build
+_build/
 Makefile
 Makefile.old
 blib/*

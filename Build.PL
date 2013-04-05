@@ -51,7 +51,6 @@ my $builder = Module::Build->new(
 
         'AnyEvent'          => '0',
         'App::cpanoutdated' => '0',
-        'App::Ack'          => '0',
 
         'ShipIt'           => '0',
         $file_notify       => '0',

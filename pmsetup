@@ -93,20 +93,29 @@ sub write_file {
 
 __DATA__
 ---
-file: Makefile.PL
+file: Build.PL
 template: |
-  use inc::Module::Install;
-  use Module::Install::AuthorTests;
-  use Module::Install::Repository;
+  use strict;
+  use warnings;
+  use Module::Build::Pluggable (
+      'CPANfile',
+      'GithubMeta',
+  );
 
-  name '<: $dist :>';
-  all_from 'lib/<: $path :>';
+  my $builder = Module::Build::Pluggable->new(
+      dist_author => 'Syohei YOSHIDA<syohex@gmail.com>',
+      license     => 'perl',
+      no_index    => { 'directory' => [ 't', 'xt', 'inc', 'eg' ] },
+      test_files  => ( -d '.git' || $ENV{RELEASE_TESTING} ) ? 't/ xt/' : 't/',
 
-  test_requires 'Test::More' => '0.98';
+      name        => '<: $dist :>',
+      module_name => '<: $module :>',
 
-  author_tests('xt');
-  auto_set_repository();
-  WriteAll;
+      create_readme  => 0,
+      create_license => 0,
+  );
+
+  $builder->create_build_script();
 
 ---
 file: t/00_compile.t
@@ -240,7 +249,6 @@ template: |
   MYMETA
   ^README.md$
   ^README.pod$
-  \b_build
   ^\.travis\.yml$
 
 ---
@@ -288,7 +296,8 @@ template: |
   Makefile
   Makefile.old
   MANIFEST.bak
-  inc/
   blib/
   pm_to_blib
+  Build
+  _build/
   *~

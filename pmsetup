@@ -118,6 +118,20 @@ template: |
   $builder->create_build_script();
 
 ---
+file: cpanfile
+template: |
+
+  on test => sub {
+      requires 'Test::More', '0.98';
+  };
+
+  on configure => sub  {
+      requires 'Module::Build::Pluggable';
+      requires 'Module::Build::Pluggable::GithubMeta';
+      requires 'Module::Build::Pluggable::CPANfile';
+  };
+
+---
 file: t/00_compile.t
 template: |
   use strict;

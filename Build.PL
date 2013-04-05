@@ -21,10 +21,6 @@ my $builder = Module::Build->new(
         'YAML'         => '0',
         'Text::Xslate' => '0',
 
-        'Module::Install'                    => '0',
-        'Module::Install::AuthorTests'       => '0',
-        'Module::Install::Repository'        => '0',
-        'Module::Install::XSUtil'            => '0',
         'Module::Build'                      => '0',
         'Module::Build::Pluggable'           => '0',
         'Module::Build::Pluggable::CPANfile' => '0',

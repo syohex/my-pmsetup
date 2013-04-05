@@ -131,6 +131,17 @@ template: |
       requires 'Module::Build::Pluggable::CPANfile';
   };
 
+___
+file: .travis.yml
+template:
+  language: perl
+  before_install:
+    - "perlbrew -f install-cpanm"
+    - "cpanm Module::Build::Pluggable"
+  perl:
+    - 5.16
+    - 5.14
+
 ---
 file: t/00_compile.t
 template: |

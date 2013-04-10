@@ -58,14 +58,14 @@ sub write_plugin_files {
         write_file($file, $tmpl->{template}, $vars);
     }
 
-    !system "perl Makefile.PL" or die $?;
-    !system 'make manifest' or die $?;
+    !system "perl Build.PL" or die $?;
+    !system './Build manifest' or die $?;
     !system 'git init' or die $?;
     !system 'git add .' or die $?;
     !system 'git commit -m "init repos"' or die $?;
     !system 'git tag init' or die $?;
-    !system 'make test' or die $?;
-    !system 'make distclean' or die $?;
+    !system './Build test' or die $?;
+    !system './Build distclean' or die $?;
 }
 
 sub write_file {
@@ -131,9 +131,9 @@ template: |
       requires 'Module::Build::Pluggable::CPANfile';
   };
 
-___
+---
 file: .travis.yml
-template:
+template: |
   language: perl
   before_install:
     - "perlbrew -f install-cpanm"
@@ -290,12 +290,12 @@ template: |
 
   Download it, unpack it, then build it as per the usual:
 
-      % perl Makefile.PL
-      % make && make test
+      % perl Build.PL
+      % ./Build && ./Build test
 
   Then install it:
 
-      % make install
+      % ./Build install
 
   DOCUMENTATION
 

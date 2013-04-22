@@ -20,6 +20,7 @@ my $builder = Module::Build->new(
     requires           => {
         'YAML'         => '0',
         'Text::Xslate' => '0',
+        'Milla'        => '0',
 
         'Module::Build'                      => '0',
         'Module::Build::Pluggable'           => '0',
@@ -30,6 +31,9 @@ my $builder = Module::Build->new(
         'Test::Spelling'                => '0',
         'Test::Perl::Critic'            => '0',
         'Test::Pod'                     => '0',
+        'Test::CPAN::Meta'              => '0',
+        'Test::MinimumVersion'          => '0',
+        'Pod::Wordlist::hanekomu'       => '0',
         'Perl::Tidy'                    => '0',
         'Config::Pit'                   => '0',
         'Software::License'             => '0',
